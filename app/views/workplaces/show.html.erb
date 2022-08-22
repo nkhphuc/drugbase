@@ -1,0 +1,22 @@
+<div class="workplace">
+    <div>
+        Name: <%= @workplace.name %>
+    </div>
+    <div>
+        Address: <%= @workplace.address %>
+    </div>
+    <div>
+        Tax code: <%= @workplace.tax_code %>
+    </div>
+</div>
+
+<div class="users-list">
+    <h3> <%= pluralize(@users.size, "User") %> </h3>
+    <ul>
+        <% @users.each do |user| %>
+            <li>
+                <%= user.name %>
+            </li>
+        <% end %>
+    </ul>
+</div>

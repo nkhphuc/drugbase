@@ -1,0 +1,7 @@
+<% @workplaces.each do |workplace| %>
+    <div class="workplaces">
+        Welcome to
+        <%= link_to workplace.name, workplace_path(workplace) %>
+        's Website !!!
+    </div>
+<% end %>

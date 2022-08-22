@@ -6,11 +6,37 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+Workplace.create!([
+        {
+                name: "CÔNG TY CỔ PHẦN CÔNG NGHỆ FLEXCORE",
+                address: "05 Tuy Lý Vương, Phường Vỹ Dạ, Thành Phố Huế, Tỉnh Thừa Thiên - Huế",
+                tax_code: "3301.684.091",
+                slug: "cong-ty-co-phan-cong-nghe-flexcore"
+        },
+        {
+                name: "CÔNG TY TNHH DP-TBYT BẢO MINH",
+                address: "Thôn Chiết Bi, Phường Phú Thượng, Thành phố Huế, Tỉnh Thừa Thiên Huế",
+                tax_code: "3301.633.273",
+                slug: "cong-ty-tnhh-dp-tbyt-bao-minh"
+        }
+])
+
 user = User.new(
         email: "nkhphuc@gmail.com",
         password: "Qwer#1234",
-        name: "Nguyen Khoa Hoang Phuc",
+        name: "Nguyễn Khoa Hoàng Phúc",
         username: "nkhphuc",
+        workplace_id: 1
+)
+user.confirmed_at = Time.now
+user.save
+
+user = User.new(
+        email: "phuc@gmail.com",
+        password: "Qwer#1234",
+        name: "Hoàng Phúc",
+        username: "phuc",
+        workplace_id: 2
 )
 user.confirmed_at = Time.now
 user.save

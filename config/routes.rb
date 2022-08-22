@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :workplaces
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
     post "signin" => "devise/sessions#create"
     delete "signout" => "devise/sessions#destroy"
   end
+
+  root "workplaces#index"
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

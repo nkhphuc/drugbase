@@ -13,5 +13,22 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit :sign_in, keys: [:login, :password]
       devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     end
-      
+
+    private
+
+    def require_signin
+        unless user_signed_in?
+            session[:intended_url] = request.url
+            redirect_to signin_path, alert: "Please sign in first!"
+        end
+    end
+
+    def current_workplace
+        @current_workplace ||= Workplace.find(current_user[:workplace_id]) if user_signed_in?
+    end
+
+    def current_workplace?(workplace)
+        current_workplace == workplace
+    end
+          
 end
