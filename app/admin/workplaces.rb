@@ -5,7 +5,7 @@ ActiveAdmin.register Workplace do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :address, :tax_code
+  permit_params :name, :address, :tax_code, :slug
   #
   # or
   #
@@ -14,5 +14,9 @@ ActiveAdmin.register Workplace do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+  controller do
+    defaults :finder => :find_by_slug
+  end
   
 end

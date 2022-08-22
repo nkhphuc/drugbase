@@ -8,9 +8,10 @@ Rails.application.routes.draw do
     get "signin" => "devise/sessions#new"
     post "signin" => "devise/sessions#create"
     delete "signout" => "devise/sessions#destroy"
+    get "signup" => "devise/registrations#new"
   end
 
-  root "workplaces#index"
+  root "pages#index"
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

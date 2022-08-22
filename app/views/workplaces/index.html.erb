@@ -4,4 +4,10 @@
         <%= link_to workplace.name, workplace_path(workplace) %>
         's Website !!!
     </div>
+    <% if workplace.id == 1 %>
+        <div>
+            The Webpage is built by Flexcore. 
+            To access to your company's site, please contact our admins. Thank you!
+        </div>
+    <% end %>    
 <% end %>
