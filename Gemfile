@@ -72,5 +72,6 @@ group :test do
 end
 
 gem "activeadmin"
+gem "sass-rails"
 gem "devise"
 gem "omniauth"
