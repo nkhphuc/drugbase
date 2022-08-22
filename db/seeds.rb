@@ -8,7 +8,7 @@
 
 user = User.new(
         email: "nkhphuc@gmail.com",
-        password: "1234567890",
+        password: "Qwer#1234",
         name: "Nguyen Khoa Hoang Phuc",
         username: "nkhphuc",
 )
