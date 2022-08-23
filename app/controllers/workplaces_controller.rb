@@ -1,6 +1,6 @@
 class WorkplacesController < ApplicationController
 
-    before_action :require_signin
+    before_action :authenticate_user!
     before_action :require_correct_workplace, only: :show
 
     def index
