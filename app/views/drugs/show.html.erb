@@ -1,0 +1,21 @@
+<div class="drug-details">
+
+    <% if current_workplace %>
+        <div class="product">
+            <%= product_add_or_remove_button(@drug, @product) %>
+        </div>
+    <% end %>
+
+    <div>
+        <h1> Name: <%= @drug.name %> </h1>
+        <h2> Registration No.: <%= @drug.registration_no %> </h2>
+    </div>
+   
+</div>
+
+<% if user_signed_in? %>
+    <div class="action">
+        <%= button_to "Edit", edit_drug_path(@drug), method: :get %>
+        <%= button_to "Delete", drug_path(@drug), method: :delete, form: {data: { turbo_confirm: "Are you sure?" } } %>
+    </div>
+<% end %>

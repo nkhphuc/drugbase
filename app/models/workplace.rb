@@ -4,6 +4,9 @@ class Workplace < ApplicationRecord
 
     has_many :users, dependent: :destroy
 
+    has_many :products, dependent: :destroy
+    has_many :drugs, through: :products
+
     def to_param
         slug
     end

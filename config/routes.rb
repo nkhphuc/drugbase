@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :drugs do
+    resources :products, only: [:create, :destroy]
+  end
   resources :workplaces
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

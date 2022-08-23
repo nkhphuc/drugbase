@@ -36,5 +36,7 @@ class ApplicationController < ActionController::Base
     def store_user_location!
         store_location_for(:user, request.fullpath)
     end
-             
+
+    helper_method :current_workplace
+                
 end

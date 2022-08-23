@@ -9,6 +9,7 @@ class WorkplacesController < ApplicationController
 
     def show
         @users = @workplace.users
+        @drugs = @workplace.drugs
     end
 
     private

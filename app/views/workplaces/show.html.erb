@@ -20,3 +20,14 @@
         <% end %>
     </ul>
 </div>
+
+<% if @drugs.present? %>
+    <h4>Drugs list: </h4>
+        <ul>
+            <% @drugs.each do |drug| %>
+                <li>
+                    <%= link_to drug.name, drug_path(drug) %>
+                </li>
+            <% end %>
+        </ul>
+<% end %>

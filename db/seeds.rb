@@ -51,3 +51,14 @@ user.confirmed_at = Time.now
 user.save
 
 AdminUser.create!(email: "nkhphuc@gmail.com", password: "Qwer#1234", password_confirmation: "Qwer#1234") if Rails.env.development?
+
+Drug.create!([
+        {
+                registration_no: "VD-27956-17",
+                name: "Keygestan 100"
+        },
+        {
+                registration_no: "VN-21777-19",
+                name: "Bacterocin Oint"
+        }
+])
