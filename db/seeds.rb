@@ -11,12 +11,21 @@ Workplace.create!([
                 name: "CÔNG TY CỔ PHẦN CÔNG NGHỆ FLEXCORE",
                 address: "05 Tuy Lý Vương, Phường Vỹ Dạ, Thành Phố Huế, Tỉnh Thừa Thiên - Huế",
                 tax_code: "3301.684.091",
+                description:
+	                %{
+                                This Webpage is built by Flexcore. 
+                                To access to your company's site, please contact our admins as soon as possible. Thank you!
+	                }.squish,
                 slug: "cong-ty-co-phan-cong-nghe-flexcore"
         },
         {
                 name: "CÔNG TY TNHH DP-TBYT BẢO MINH",
                 address: "Thôn Chiết Bi, Phường Phú Thượng, Thành phố Huế, Tỉnh Thừa Thiên Huế",
                 tax_code: "3301.633.273",
+                description:
+	                %{
+                                This is BM's Data.
+	                }.squish,
                 slug: "cong-ty-tnhh-dp-tbyt-bao-minh"
         }
 ])

@@ -4,6 +4,7 @@ class CreateWorkplaces < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :address
       t.string :tax_code
+      t.text :description
       t.string :slug
 
       t.timestamps

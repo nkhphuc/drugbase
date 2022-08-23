@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     get "signup" => "devise/registrations#new"
   end
 
-  root "pages#index"
+  root "pages#home"
+  get "about" => "pages#about", as: "about"
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
