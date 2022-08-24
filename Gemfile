@@ -75,3 +75,4 @@ gem "activeadmin"
 gem "sass-rails"
 gem "devise"
 gem "omniauth"
+gem 'rails_12factor', group: :production
