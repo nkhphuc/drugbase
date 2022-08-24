@@ -1,12 +1,9 @@
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-  :address              =>  'smtp.sendgrid.net',
-  :port                 =>  '587',
-  :authentication       =>  :plain,
-  :user_name            =>  'apikey',
-  :password             =>  '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',
-  :domain               =>  'outlook.com',
-  :enable_starttls_auto  =>  true
+  :server               =>  'smtp.sendgrid.net',
+  :ports                =>  '587',
+  :username             =>  'apikey',
+  :password             =>  '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'
 }
 
 
