@@ -1,6 +1,6 @@
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-  :server              =>  'smtp.sendgrid.net',
+  :address              =>  'smtp.sendgrid.net',
   :port                 =>  '587',
   # :authentication       =>  :plain,
   :user_name            =>  'nkhphuc@gmail.com',
