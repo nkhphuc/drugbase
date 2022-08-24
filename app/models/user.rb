@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   belongs_to :workplace
+  before_save :set_workplace
 
   attr_writer :login
   # Include default devise modules. Others available are:
@@ -37,6 +38,12 @@ class User < ApplicationRecord
     if User.where(email: username).exists?
       errors.add(:username, :invalid)
     end
+  end
+
+  private
+
+  def set_workplace
+    self.workplace_id = 1
   end
  
 end
