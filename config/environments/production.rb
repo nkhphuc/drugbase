@@ -69,8 +69,8 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
   # config.action_mailer.default_url_options = { host: "glacial-reef-66399.herokuapp.com" }
-  # config.action_mailer.default_url_options = { host: "nkhphuc@outlook.com" }
-  config.action_mailer.default_options = { host: "nkhphuc@outlook.com", from: "nkhphuc@outlook.com", reply_to: "nkhphuc@outlook.com" }
+  config.action_mailer.default_url_options = { host: "nkhphuc@outlook.com" }
+  config.action_mailer.default_options = { from: "nkhphuc@outlook.com", reply_to: "nkhphuc@outlook.com" }
   config.action_mailer.perform_deliveries = true
   
   
