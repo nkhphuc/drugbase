@@ -50,7 +50,7 @@ user = User.new(
 user.confirmed_at = Time.now
 user.save
 
-AdminUser.create!(email: "nkhphuc@gmail.com", password: "Qwer#1234", password_confirmation: "Qwer#1234") if Rails.env.development?
+AdminUser.create!(email: "nkhphuc@gmail.com", password: "Qwer#1234") if Rails.env.development?
 
 Drug.create!([
         {
