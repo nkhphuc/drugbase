@@ -18,5 +18,12 @@ module Drugbase
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.cache_store = :redis_store, {
+      host: "localhost",
+      port: 6379,
+      db: 0,
+    }, {expires_in: 7.days}
+    
   end
 end

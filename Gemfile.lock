@@ -107,6 +107,10 @@ GEM
       responders
       warden (~> 1.2.3)
     digest (3.1.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.11.0)
     ffi (1.15.5)
     formtastic (4.0.0)
@@ -193,6 +197,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.4)
+    rack-cache (1.13.0)
+      rack (>= 0.4)
     rack-protection (2.2.2)
       rack
     rack-test (2.0.2)
@@ -246,6 +252,9 @@ GEM
     redis-rack (2.1.4)
       rack (>= 2.0.8, < 3)
       redis-store (>= 1.2, < 2)
+    redis-rack-cache (2.2.1)
+      rack-cache (>= 1.10, < 2)
+      redis-store (>= 1.6, < 2)
     redis-rails (5.0.2)
       redis-actionpack (>= 5.0, < 6)
       redis-activesupport (>= 5.0, < 6)
@@ -325,6 +334,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  dotenv-rails
   image_processing
   importmap-rails
   jbuilder
@@ -335,6 +345,7 @@ DEPENDENCIES
   rails_12factor
   redis
   redis-namespace
+  redis-rack-cache
   redis-rails
   sass-rails
   selenium-webdriver
