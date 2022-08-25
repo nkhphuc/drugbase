@@ -28,7 +28,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -75,4 +75,6 @@ gem "activeadmin"
 gem "sass-rails"
 gem "devise"
 gem "omniauth"
-gem 'rails_12factor', group: :production
+gem "rails_12factor", group: :production
+gem "redis-namespace"
+gem "redis-rails"
