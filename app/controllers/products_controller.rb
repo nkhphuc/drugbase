@@ -4,30 +4,32 @@ class ProductsController < ApplicationController
     before_action :set_drug
 
     def create
-        @drug.workplaces << current_workplace
+        @product = Product.create(drug: @drug, workplace: current_workplace)
 
         respond_to do |format|
-            format.json { head :no_content }
-            format.js   { render :layout => false }
-         end
+            format.turbo_stream 
+        end
 
     end
 
     def destroy
-        @product = current_workplace.products.find(params[:id])
+        @product = @drug.products.find_by(workplace: current_workplace)
         @product.destroy
-
+                                        
         respond_to do |format|
-            format.json { head :no_content }
-            format.js   { render :layout => false }
-         end
+            format.turbo_stream
+        end
 
     end
 
     private
 
     def set_drug
-        @drug = Drug.find_by!(registration_no: params[:drug_id])
+        @drug = Drug.find_by(registration_no: params[:drug_id])
+    end
+
+    def product_params
+        params.require(:product).permit(:drug_id, :workplace_id)
     end
 
 end

@@ -1,18 +1,16 @@
 <% @drugs.each do |drug| %>
-    <div class="movie">
-        <div class="drug-info">
-            <h2>
-                Name: <%= link_to drug.name, drug_path(drug) %>
-            </h2>
-            <h3>
-                Registration No.: <%= drug.registration_no %>
-            </h3>
-        </div>
+    <div>
+        <h2>
+            Name: <%= link_to drug.name, drug_path(drug) %>
+        </h2>
+        <h3>
+            Registration No.: <%= drug.registration_no %>
+        </h3>
     </div>
 <% end %>
 
 <% if user_signed_in? %>
-    <div class="action">
+    <div>
         <%= button_to "Add New Drug", new_drug_path, method: :get %>
     </div>
 <% end %>

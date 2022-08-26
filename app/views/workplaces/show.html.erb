@@ -1,4 +1,4 @@
-<div class="workplace">
+<div>
     <div>
         Name: <%= @workplace.name %>
     </div>
@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div class="users-list">
+<div>
     <h3> <%= pluralize(@users.size, "User") %> </h3>
     <ul>
         <% @users.each do |user| %>

@@ -46,7 +46,7 @@ class DrugsController < ApplicationController
     private
 
     def set_drug
-        @drug = Drug.find_by!(registration_no: params[:id])
+        @drug = Drug.find_by(registration_no: params[:id])
     end
 
     def drug_params
