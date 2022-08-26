@@ -8,5 +8,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") %>/<%= ENV.fetch("REDIS_DB") %>
+  url: <%= ENV.fetch("REDIS_URL") %> / <%= ENV.fetch("REDIS_TLS_URL") %>
   channel_prefix: drugbase_production
