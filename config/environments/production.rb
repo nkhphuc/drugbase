@@ -97,4 +97,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.serve_static_files = true
+
+  #Heroku Redis config
+  config.active_record.cache_versioning = false
+  
 end
