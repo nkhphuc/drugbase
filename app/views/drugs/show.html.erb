@@ -1,8 +1,6 @@
 <div>
 
-    <%= turbo_frame_tag "product_toggle_button_frame" do %>
-        <%= render partial: "products/button" %>
-    <% end %>
+    <%= render partial: "products/toggle_frame" %>
     
     <div>
         <h1> Name: <%= @drug.name %> </h1>
