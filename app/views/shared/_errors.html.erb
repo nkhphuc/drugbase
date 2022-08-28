@@ -1,13 +1,13 @@
 <% if object.errors.any? %>
     <div>
-        <h3>
+        <div class="fs-4 fst-italic">
             Your form could not be saved.
-        </h3>
-        <h4>
+        </div>
+        <div class="fs-6 fw-light fst-italic">
             Please correct the following
             <%= pluralize(object.errors.size, "error") %>:
-        </h4>
-        <ul>
+        </div>
+        <ul class="fs-6 fw-light fst-italic">
             <% object.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
             <% end %>
