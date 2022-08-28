@@ -5,7 +5,7 @@ ActiveAdmin.register Workplace do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :address, :tax_code, :slug
+  permit_params :name, :address, :tax_code, :description, :slug
   #
   # or
   #
