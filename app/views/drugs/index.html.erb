@@ -1,13 +1,4 @@
-<% @drugs.each do |drug| %>
-    <div>
-        <h2>
-            Name: <%= link_to drug.name, drug_path(drug) %>
-        </h2>
-        <h3>
-            Registration No.: <%= drug.registration_no %>
-        </h3>
-    </div>
-<% end %>
+<%= render @drugs %>
 
 <% if user_signed_in? %>
     <div>

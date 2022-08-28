@@ -1,9 +1,9 @@
-<div id="product_toggle_button_<%= dom_id(@drug) %>">
+<div id="product_toggle_button_<%= dom_id(drug) %>">
     <% if current_workplace %>
-        <% if Product.find_by(drug: @drug, workplace: current_workplace) %>
-            <%= button_to "Remove Product", drug_product_path(@drug, @product), method: :delete, form: { data: {turbo_confirm: "Are you sure?"} } %>
+        <% if Product.find_by(drug: drug, workplace: current_workplace) %>
+            <%= button_to "Remove Product", drug_product_path(drug, product), method: :delete, form: { data: {turbo_confirm: "Are you sure?"} } %>
         <% else %>
-            <%= button_to "Add Product", drug_products_path(@drug) %>
+            <%= button_to "Add Product", drug_products_path(drug) %>
         <% end %>
     <% end %>
 </div>
