@@ -1,5 +1,4 @@
 class WorkplacesController < ApplicationController
-
     before_action :authenticate_user!
     before_action :require_correct_workplace, only: :show
 
@@ -18,5 +17,4 @@ class WorkplacesController < ApplicationController
         @workplace = Workplace.find_by(slug: params[:id])
         redirect_to root_path unless current_workplace?(@workplace)
     end
-
 end

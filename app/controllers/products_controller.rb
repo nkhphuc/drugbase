@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-
     before_action :authenticate_user!
     before_action :set_drug
 
@@ -9,7 +8,6 @@ class ProductsController < ApplicationController
         respond_to do |format|
             format.turbo_stream 
         end
-
     end
 
     def destroy
@@ -19,7 +17,6 @@ class ProductsController < ApplicationController
         respond_to do |format|
             format.turbo_stream
         end
-
     end
 
     private
@@ -31,5 +28,4 @@ class ProductsController < ApplicationController
     def product_params
         params.require(:product).permit(:drug_id, :workplace_id)
     end
-
 end

@@ -1,5 +1,4 @@
 class DrugsController < ApplicationController
-
     before_action :authenticate_user!, except: [:index, :show]
     before_action :set_drug, only: [:show, :edit, :update, :destroy]
 
@@ -13,10 +12,13 @@ class DrugsController < ApplicationController
 
     def create
         @drug = Drug.new(drug_params)
-        if @drug.save
-            redirect_to drug_path(@drug), notice: "Drug successfully created!"
-        else
-            render :new, status: 422
+
+        respond_to do |format|
+            if @drug.save
+                format.html { redirect_to drug_path(@drug), notice: "Drug successfully created!" }
+            else
+                format.html { render :new, status: :unprocessable_entity }
+            end
         end
     end
 
@@ -31,16 +33,21 @@ class DrugsController < ApplicationController
     end
 
     def update
-        if @drug.update(drug_params)
-            redirect_to drug_path(@drug), notice: "Drug successfully updated!"
-        else
-            render :edit, status: 422
+        respond_to do |format|
+            if @drug.update(drug_params)
+                format.html { redirect_to drug_path(@drug), notice: "Drug successfully updated!" }
+            else
+                format.html { render :edit, status: :unprocessable_entity }
+            end
         end
     end
 
     def destroy
         @drug.destroy
-        redirect_to drugs_path, status: :see_other, alert: "Drug successfully deleted!"
+
+        respond_to do |format|
+            format.html { redirect_to drugs_path, status: :see_other, alert: "Drug successfully deleted!" }
+        end
     end
 
     private
@@ -52,5 +59,4 @@ class DrugsController < ApplicationController
     def drug_params
         params.require(:drug).permit(:name, :registration_no)
     end
-
 end
