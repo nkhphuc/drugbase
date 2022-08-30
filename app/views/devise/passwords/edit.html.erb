@@ -1,25 +1,55 @@
-<h2>Change your password</h2>
+<div class="container mt-3">
+  <div class="row justify-content-center align-items-center">
+    <h2 class="col-8">Change your password</h2>
+  </div>
+</div>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="container vstack gap-1 mt-3">
+    <div class="row g-3 justify-content-center align-items-center">
+      <div class="col-sm-8">
+        <%= render "devise/shared/error_messages", resource: resource %>
+      </div>
+    </div>
+  </div>
+
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+  <div class="container vstack gap-3 mt-3">
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-sm-8">
+        <%= f.label :password, "New password", class: "col-form-label" %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+      </div>
+      <div class="col-sm-8">
+        <%= f.password_field :password, autofocus: true, class: "form-control" %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-sm-8">
+        <%= f.label :password_confirmation, "Confirm new password", class: "col-form-label" %>
+      </div>
+      <div class="col-sm-8">
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row g-3 justify-content-center align-items-center">
+      <div class="col-sm-8">
+        <%= f.submit "Change my password", class: "btn btn-primary" %>
+      </div>
+    </div>
 <% end %>
+    <div class="row g-3 justify-content-center align-items-center">
+      <div class="col-sm-8">
+        <div class="vstack gap-1">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
 
-<%= render "devise/shared/links" %>
+  </div>
