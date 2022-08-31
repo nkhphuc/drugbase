@@ -1,0 +1,16 @@
+<li id="<%= "#{dom_id(post)}_container" %>">
+  <%= turbo_frame_tag dom_id(post) do %>
+    <%= post.user.username %>
+    <%= post.title %>
+    <%= post.content %>
+    <%= button_to "Edit", edit_post_path(post), method: :get, class: post.closed? ? "text-decoration-line-through" : "" %>
+    
+    <% if post.closed? %>
+      <%= button_to "Mark as open", change_status_post_path(post, post: {status: "open"} ), method: :patch %>
+    <% else %>
+      <%= button_to "Mark as closed", change_status_post_path(post, post: {status: "closed"} ), method: :patch %>
+    <% end %>
+
+    <%= button_to "Delete", post_path(post),method: :delete %>
+  <% end %>
+</li>

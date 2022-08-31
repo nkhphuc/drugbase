@@ -14,10 +14,8 @@
 
     <%= render "layouts/header" %>
 
-    <div class="container-fluid">
-      <%= render "layouts/messages" %>
-    </div>
-
+    <%= render "shared/flash" %>
+    
     <section>
       <%= yield %>
     </section>

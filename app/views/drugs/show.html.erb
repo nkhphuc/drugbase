@@ -1,9 +1,7 @@
 <div>
 
-    <%= turbo_frame_tag "product_toggle_button_frame_#{dom_id(@drug)}" do %>
-        <%= render "products/button", drug: @drug, product: @product %>
-    <% end %>
-    
+    <%= render "products/button", drug: @drug, product: @product %>
+       
     <div>
         <h1> Name: <%= @drug.name %> </h1>
         <h2> Registration No.: <%= @drug.registration_no %> </h2>

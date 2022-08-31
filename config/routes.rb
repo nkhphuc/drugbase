@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :posts do
+    patch :change_status, on: :member
+  end
   resources :drugs do
     resources :products, only: [:create, :destroy]
   end

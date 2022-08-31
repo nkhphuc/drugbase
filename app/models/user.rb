@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   belongs_to :workplace
 
+  has_many :posts, dependent: :destroy
+
   attr_writer :login
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -1,3 +1,3 @@
-<%= turbo_stream.replace "product_toggle_button_#{dom_id(@drug)}" do %>
+<%= turbo_stream.replace "product_toggle_button_frame_#{dom_id(@drug)}" do %>
   <%= render "products/button", drug: @drug, product: @product %>
 <% end %>

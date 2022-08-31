@@ -5,7 +5,5 @@
     <h3>
         Registration No.: <%= drug.registration_no %>
     </h3>
-    <%= turbo_frame_tag "product_toggle_button_frame_#{dom_id(drug)}" do %>
         <%= render "products/button", drug: drug, product: product_in_index(drug) %>
-    <%end %>
 </div>
