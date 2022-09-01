@@ -1,23 +1,24 @@
-<%= form_with(model: post, id: "#{dom_id(post)}_form") do |form| %>
-  <% if post.errors.any? %>
-    <div>
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= turbo_frame_tag "#{dom_id(post)}_form" do %>
+  <%= form_with(model: post) do |form| %>
+    <% if post.errors.any? %>
+      <div>
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <ul>
+          <% post.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div>
+      <%= form.label :title %>
+      <%= form.text_field :title, placeholder: "Add a new title..." %>
+
+      <%= form.label :content %>
+      <%= form.text_field :content, placeholder: "Add content..." %>
+
+      <%= form.submit %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title, placeholder: "Add a new title..." %>
-
-    <%= form.label :content %>
-    <%= form.text_field :content, placeholder: "Add content..." %>
-
-    <%= form.submit %>
-  </div>
 <% end %>

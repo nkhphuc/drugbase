@@ -53,7 +53,7 @@ class PostsController < ApplicationController
         respond_to do |format|
             format.turbo_stream do
                 flash.turbo[:alert] = "Post was successfully destroyed."
-                render turbo_stream: turbo_stream.remove("#{helpers.dom_id(@post)}_container")
+                render turbo_stream: turbo_stream.remove("#{helpers.dom_id(@post)}")
             end
             format.html { redirect_to posts_path, alert: "Post was successfully destroyed." }
             format.json { head :no_content }
@@ -65,7 +65,7 @@ class PostsController < ApplicationController
         respond_to do |format|
             format.turbo_stream do
                 flash.turbo[:notice] = "Updated post status."
-                render turbo_stream: turbo_stream.remove("#{helpers.dom_id(@post)}_container")
+                render turbo_stream: turbo_stream.remove("#{helpers.dom_id(@post)}")
             end
             format.html { redirect_to posts_path, notice: "Updated post status." }
         end

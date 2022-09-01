@@ -2,30 +2,23 @@
     Your Posts
 </h2>
 
-<%= turbo_frame_tag "posts-container" do %>
-    <div>
-        <ul>
-            <li>
-                <%= link_to "Open",
-                    posts_path(status: "open")
-                %>
-            </li>
-            <li>
-                <%= link_to "Closed",
-                    posts_path(status: "closed")
-                %>
-            </li>
-        </ul>
-    <div>
-
-    <% unless params[:status] == "closed" %>
-        <div>
-            <%= render "form", post: Post.new %>
-        </div>
-    <% end %>
-    
-    <ul id="posts">
-        <%= render @posts %>
+<div>
+    <ul>
+        <li>
+            <%= link_to "Open", posts_path(status: "open") %>
+        </li>
+        <li>
+            <%= link_to "Closed", posts_path(status: "closed") %>
+        </li>
     </ul>
+<div>
+
+<% unless params[:status] == "closed" %>
+    <%= render "form", post: Post.new %>
 <% end %>
+    
+<%= turbo_frame_tag "posts" do %>
+    <%= render @posts %>
+<% end %>
+
 
