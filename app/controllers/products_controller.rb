@@ -6,7 +6,9 @@ class ProductsController < ApplicationController
         @product = Product.create(drug: @drug, workplace: current_workplace)
 
         respond_to do |format|
-            format.turbo_stream 
+            format.turbo_stream do
+                flash.turbo[:notice] = "A product has been added to your workplace."
+            end
         end
     end
 
@@ -15,7 +17,9 @@ class ProductsController < ApplicationController
         @product.destroy
                                         
         respond_to do |format|
-            format.turbo_stream
+            format.turbo_stream do
+                flash.turbo[:notice] = "A product has been removed from your workplace."
+            end
         end
     end
 

@@ -21,4 +21,4 @@
     <%= render @posts %>
 <% end %>
 
-
+<%= turbo_stream_from "posts_channel" %>

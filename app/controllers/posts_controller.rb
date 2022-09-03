@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
-    before_action :set_post, only: [ :edit, :update, :destroy, :change_status]
+    before_action :set_post, only: [ :show, :edit, :update, :destroy, :change_status]
         
     def index
         @posts = Post.where(status: params[:status].presence || "open")
+    end
+
+    def show
     end
 
     def edit
@@ -12,14 +15,14 @@ class PostsController < ApplicationController
     def create
         @post = Post.new(post_params)
         @post.user_id = current_user.id
-      
-        respond_to do |format|
-            if @post.save
-                format.turbo_stream do
-                    flash.turbo[:notice] = "Post was successfully created."
-                end
-                format.html { redirect_to post_path(@post), notice: "Post was successfully created." }
-            else
+        if @post.save
+            respond_to do |format|
+                format.turbo_stream
+                format.html { redirect_to post_path(@post) }
+            end
+            Turbo::StreamsChannel.broadcast_prepend_to("posts_channel", target: "posts", partial: "posts/post", locals: { post: @post })
+        else
+            respond_to do |format|
                 format.turbo_stream { render turbo_stream: turbo_stream.replace("#{helpers.dom_id(@post)}_form", partial: "form", locals: { post: @post }) }
                 format.html { render :new, status: :unprocessable_entity }
             end
@@ -28,14 +31,14 @@ class PostsController < ApplicationController
 
     def update
         if @post.status == "open"
-            respond_to do |format|
-                if @post.update(post_params)
-                    format.turbo_stream do
-                        flash.turbo[:notice] = "Post was successfully updated."
-                    end
-                    format.html { redirect_to post_path(@post), notice: "Post was successfully updated." }
+            if @post.update(post_params)
+                respond_to do |format|
+                    format.html { redirect_to post_path(@post) }
                     format.json { render :show, status: :ok, location: @post }
-                else
+                end
+                Turbo::StreamsChannel.broadcast_replace_to("posts_channel", target: "#{helpers.dom_id(@post)}", partial: "posts/post", locals: { post: @post })
+            else
+                respond_to do |format|
                     format.turbo_stream { render turbo_stream: turbo_stream.replace("#{helpers.dom_id(@post)}_form", partial: "form", locals: { post: @post }) }
                     format.html { render :edit, status: :unprocessable_entity }
                     format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -49,32 +52,25 @@ class PostsController < ApplicationController
 
     def destroy
         @post.destroy
-      
         respond_to do |format|
-            format.turbo_stream do
-                flash.turbo[:alert] = "Post was successfully destroyed."
-                render turbo_stream: turbo_stream.remove("#{helpers.dom_id(@post)}")
-            end
-            format.html { redirect_to posts_path, alert: "Post was successfully destroyed." }
+            format.html { redirect_to posts_path }
             format.json { head :no_content }
         end
+        Turbo::StreamsChannel.broadcast_remove_to("posts_channel", target: "#{helpers.dom_id(@post)}" )
     end
 
     def change_status
         @post.update(status: post_params[:status])
         respond_to do |format|
-            format.turbo_stream do
-                flash.turbo[:notice] = "Updated post status."
-                render turbo_stream: turbo_stream.remove("#{helpers.dom_id(@post)}")
-            end
-            format.html { redirect_to posts_path, notice: "Updated post status." }
+            format.html { redirect_to posts_path }
         end
+        Turbo::StreamsChannel.broadcast_remove_to("posts_channel", target: "#{helpers.dom_id(@post)}" )
     end
 
     private
 
     def post_params
-        params.require(:post).permit(:title, :content, :status, :user)
+        params.require(:post).permit(:title, :content, :status, :user_id)
     end
 
     def set_post

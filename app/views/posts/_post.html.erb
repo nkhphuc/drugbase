@@ -10,5 +10,5 @@
     <%= button_to "Mark as closed", change_status_post_path(post, post: {status: "closed"} ), method: :patch %>
   <% end %>
 
-  <%= button_to "Delete", post_path(post),method: :delete %>
+  <%= button_to "Delete", post_path(post),method: :delete, form: { data: {turbo_confirm: "Are you sure?"} } %>
 <% end %>
