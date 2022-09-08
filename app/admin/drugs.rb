@@ -14,5 +14,7 @@ ActiveAdmin.register Drug do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+  active_admin_import
   
 end
