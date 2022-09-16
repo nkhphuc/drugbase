@@ -1,9 +1,8 @@
 class DrugsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
     before_action :set_drug, only: [:show, :edit, :update, :destroy]
-    authorize_resource
-    skip_authorize_resource only: [:index, :show]
-
+    authorize_resource except: [:index, :show]
+    
     def index
         @drugs = Drug.all
     end
