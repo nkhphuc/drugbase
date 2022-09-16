@@ -63,6 +63,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem "letter_opener_web"
 end
 
 group :test do
@@ -83,3 +84,4 @@ gem "redis-rack-cache"
 gem "bootstrap"
 gem "turbo_flash"
 gem "active_admin_import"
+gem "cancancan"

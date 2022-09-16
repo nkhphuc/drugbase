@@ -16,5 +16,9 @@ ActiveAdmin.register Drug do
   # end
 
   active_admin_import
+
+  controller do
+    defaults :finder => :find_by_registration_no
+  end
   
 end

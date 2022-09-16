@@ -69,8 +69,18 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
   config.action_mailer.default_url_options = { host: "serene-lake-47258.herokuapp.com" }
-    config.action_mailer.default_options = { from: "nkhphuc@outlook.com", reply_to: "nkhphuc@outlook.com" }
+  config.action_mailer.default_options = { from: "nkhphuc@outlook.com", reply_to: "nkhphuc@outlook.com" }
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              =>  'smtp.sendgrid.net',
+    :port                 =>  '587',
+  # :authentication       =>  :plain,
+    :user_name            =>  'apikey',
+    :password             =>  ENV['SENDGRID_API_KEY'],
+  # :domain               =>  'heroku.com',
+  # :enable_starttls_auto  =>  true
+  }
   
   
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

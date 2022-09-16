@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_drug
+    authorize_resource
 
     def create
         @product = Product.create(drug: @drug, workplace: current_workplace)

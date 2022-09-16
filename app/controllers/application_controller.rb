@@ -5,7 +5,14 @@ class ApplicationController < ActionController::Base
  
     before_action :configure_permitted_parameters, if: :devise_controller?
     before_action :store_user_location!, if: :storable_location?
- 
+
+    rescue_from CanCan::AccessDenied do |exception|
+        respond_to do |format|
+            format.json { render nothing: true, status: :not_found }
+            format.html { redirect_to root_path, alert: exception.message, status: :not_found }
+        end
+    end
+
     protected
     
     def configure_permitted_parameters

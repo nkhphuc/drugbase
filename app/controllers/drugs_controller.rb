@@ -1,6 +1,7 @@
 class DrugsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
     before_action :set_drug, only: [:show, :edit, :update, :destroy]
+    authorize_resource
 
     def index
         @drugs = Drug.all
@@ -12,7 +13,6 @@ class DrugsController < ApplicationController
 
     def create
         @drug = Drug.new(drug_params)
-
         respond_to do |format|
             if @drug.save
                 format.html { redirect_to drug_path(@drug), notice: "Drug successfully created!" }
@@ -23,7 +23,6 @@ class DrugsController < ApplicationController
     end
 
     def show
-        @workplaces = @drug.workplaces
         if current_workplace
             @product = current_workplace.products.find_by(drug_id: @drug.id)
         end

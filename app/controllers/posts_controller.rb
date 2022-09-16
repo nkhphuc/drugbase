@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
     before_action :set_post, only: [ :show, :edit, :update, :destroy, :change_status]
+    authorize_resource
         
     def index
         @posts = Post.where(status: params[:status].presence || "open")
