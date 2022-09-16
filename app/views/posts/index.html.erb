@@ -20,7 +20,7 @@
 <% end %>
     
 <%= turbo_frame_tag "posts" do %>
-    <%= render @posts %>
+    <%= render @posts, user: current_user %>
 <% end %>
 
 <%= turbo_stream_from "posts_channel" %>

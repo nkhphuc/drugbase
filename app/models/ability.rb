@@ -29,12 +29,8 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
 
-    can :read, Drug
-    can :read, Post
-    can :create, User
-
     return unless user.present?
-    can :manage, User, id: user.id
+    
     can :manage, Drug
     can :manage, Post, user_id: user.id
     can :manage, Product, workplace_id: user.workplace_id
