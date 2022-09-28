@@ -15,8 +15,15 @@
 
 <% unless params[:status] == "closed" %>
     <% if user_signed_in? %>
+        <h4>Create new post</h4>
         <%= render "form", post: Post.new %>
     <% end %>
+<% end %>
+
+<h4>Search for post:</h4>
+<%= form_with(url: posts_path, method: "GET", data: { controller: "form-submission", turbo_frame: "posts", turbo_action: "advance" }) do |form| %>
+  <%= form.label :query, "Search:" %>
+  <%= form.text_field :query, data: { action: "input->form-submission#search" } %>
 <% end %>
     
 <%= turbo_frame_tag "posts" do %>

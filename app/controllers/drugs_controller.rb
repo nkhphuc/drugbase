@@ -4,7 +4,11 @@ class DrugsController < ApplicationController
     authorize_resource except: [:index, :show]
     
     def index
-        @drugs = Drug.all
+        if params[:query].present?
+            @drugs = Drug.search_by_all(params[:query])
+        else
+            @drugs = Drug.all
+        end
     end
 
     def new

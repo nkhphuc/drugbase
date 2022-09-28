@@ -1,3 +1,10 @@
+<h4>Search for drug:</h4>
+<%= form_with(url: drugs_path, method: "GET") do |form| %>
+  <%= form.label :query, "Search:" %>
+  <%= form.text_field :query %>
+  <%= form.submit 'Search', name: nil %>
+<% end %>
+
 <%= render @drugs %>
 
 <% if user_signed_in? %>

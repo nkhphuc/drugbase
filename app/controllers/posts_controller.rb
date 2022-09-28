@@ -4,7 +4,11 @@ class PostsController < ApplicationController
     authorize_resource except: [:index]
             
     def index
-        @posts = Post.where(status: params[:status].presence || "open")
+        if params[:query].present?
+            @posts = Post.where(status: params[:status].presence || "open").search_by_all(params[:query])
+        else
+            @posts = Post.where(status: params[:status].presence || "open")
+        end
     end
 
     def show
